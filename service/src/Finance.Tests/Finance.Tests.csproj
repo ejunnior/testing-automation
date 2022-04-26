@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Finance.Api\Finance.Api.csproj" />
     <ProjectReference Include="..\Finance.Infrastructure.Data\Finance.Infrastructure.Data.csproj" />
   </ItemGroup>
 
