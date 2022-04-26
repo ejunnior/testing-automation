@@ -7,6 +7,7 @@
     using Finance.Api;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.TestHost;
+    using Microsoft.Data.SqlClient;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
 
@@ -19,6 +20,8 @@
         {
             _apiServer = CreateTestServer();
         }
+
+        public SqlConnection Connection => _databaseFactory.GetConnection();
 
         public HttpClient CreateClient()
         {
