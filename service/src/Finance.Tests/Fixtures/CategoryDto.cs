@@ -5,6 +5,6 @@
     public class CategoryDto
     {
         [MaxLength(80)]
-        public string CategoryName { get; set; }
+        public string Name { get; set; }
     }
 }

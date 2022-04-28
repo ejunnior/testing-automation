@@ -2,6 +2,7 @@
 {
     using System.Collections.Specialized;
     using System.Net;
+    using System.Net.Http.Json;
     using System.Threading.Tasks;
     using Fixtures;
     using FluentAssertions;
@@ -29,20 +30,25 @@
             await Connection
                 .CreateCategoryAsync(category);
 
-            var query = new NameValueCollection
-            {
-                {"id", "1"}
-            };
-
             // Act
             var response = await HttpClient
-                .GetAsync(GetUri(path: $"{Path}/1"));//, queryString: query));
+                .GetAsync(GetUri(path: $"{Path}/1"));
 
             // Assert
             response
                 .StatusCode
                 .Should()
                 .Be(HttpStatusCode.OK);
+
+            var content = await response
+                .Content
+                .ReadFromJsonAsync<Envelope<CategoryDto>>();
+
+            content
+                .Result
+                .Name
+                .Should()
+                .Be(category.Name);
         }
     }
 }

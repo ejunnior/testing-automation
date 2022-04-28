@@ -23,7 +23,7 @@
 
             var parameters = new
             {
-                categoryName = dto.CategoryName
+                categoryName = dto.Name
             };
 
             await connection
