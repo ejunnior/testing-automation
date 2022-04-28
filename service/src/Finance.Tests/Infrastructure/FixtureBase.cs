@@ -13,6 +13,7 @@
 
     public class FixtureBase
     {
+        public static readonly Uri ApiHost = new Uri("http://localhost.com");
         private readonly TestServer _apiServer;
         private readonly DatabaseFactory _databaseFactory = new DatabaseFactory();
 

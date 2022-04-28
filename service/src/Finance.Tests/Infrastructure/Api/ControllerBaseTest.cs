@@ -1,5 +1,7 @@
 ﻿namespace Finance.Tests.Infrastructure.Api
 {
+    using System;
+    using System.Collections.Specialized;
     using System.Net.Http;
     using Microsoft.Data.SqlClient;
     using Xunit;
@@ -21,5 +23,20 @@
         protected SqlConnection Connection => _fixture.Connection;
 
         protected HttpClient HttpClient { get; }
+
+        protected Uri GetUri(string path, NameValueCollection queryString = null)
+        {
+            var builder = new UriBuilder(FixtureBase.ApiHost)
+            {
+                Path = path
+            };
+
+            if (queryString != null)
+            {
+                builder.Query = queryString.ToQueryString();
+            }
+
+            return builder.Uri;
+        }
     }
 }
