@@ -29,5 +29,33 @@
             await connection
                 .ExecuteAsync(sql, parameters);
         }
+
+        public static async Task<RegisterPayableDto> GetPayableByDocumentNumberAsync(
+            this SqlConnection connection,
+            string documentNumber)
+        {
+            var sql = @"
+                        select
+                           [Id]
+                          ,[Amount]
+                          ,[BankAccountId]
+                          ,[CategoryId]
+                          ,[CreditorId]
+                          ,[Description]
+                          ,[DocumentDate]
+                          ,[DocumentNumber]
+                          ,[DueDate]
+                          ,[PaymentDate]
+                        from payable
+                        where documentNumber = @documentNumber";
+
+            var parameters = new
+            {
+                documentNumber = documentNumber
+            };
+
+            return await connection
+                .QuerySingleAsync<RegisterPayableDto>(sql, parameters);
+        }
     }
 }
