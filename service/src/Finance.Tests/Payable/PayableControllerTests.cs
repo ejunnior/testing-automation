@@ -54,5 +54,11 @@
                 .Should()
                 .Be(dto);
         }
+
+        [Fact]
+        public async Task PayableAccountShouldBeUpdated()
+        {
+            //Criar uma extension para criar um novo Payable e editar
+        }
     }
 }
