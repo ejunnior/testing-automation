@@ -66,7 +66,7 @@
 
             persisted
                 .Should()
-                .Be(dto);
+                .BeEquivalentTo(dto, e => e.Excluding(p => p.Id));
         }
 
         [Fact]
@@ -141,7 +141,7 @@
 
             persisted
                 .Should()
-                .Be(dto);
+                .BeEquivalentTo(dto, e => e.Excluding(p => p.Id));
         }
     }
 }
