@@ -19,6 +19,28 @@
             return _dto;
         }
 
-        //Metodos para setar valores especificos
+        public RegisterPayableDtoFixture WithAmount(decimal amount)
+        {
+            _dto.Amount = amount;
+            return this;
+        }
+
+        public RegisterPayableDtoFixture WithBankAccountId(int bankAccountId)
+        {
+            _dto.BankAccountId = bankAccountId;
+            return this;
+        }
+
+        public RegisterPayableDtoFixture WithCategoryId(int categoryId)
+        {
+            _dto.CategoryId = categoryId;
+            return this;
+        }
+
+        public RegisterPayableDtoFixture WithCreditorId(int creditorId)
+        {
+            _dto.CreditorId = creditorId;
+            return this;
+        }
     }
 }

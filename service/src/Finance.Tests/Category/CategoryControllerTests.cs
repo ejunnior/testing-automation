@@ -46,9 +46,9 @@
 
             content
                 .Result
-                .Name
+                .CategoryName
                 .Should()
-                .Be(category.Name);
+                .Be(category.CategoryName);
         }
     }
 }

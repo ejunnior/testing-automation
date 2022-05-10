@@ -21,7 +21,7 @@
 
         public CategoryDtoFixture WithCategoryName(string categoryName)
         {
-            _dto.Name = categoryName;
+            _dto.CategoryName = categoryName;
             return this;
         }
     }

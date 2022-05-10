@@ -2,10 +2,10 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class CategoryDto
+    public class CreditorDto
     {
         [MaxLength(80)]
-        public string CategoryName { get; set; }
+        public string CreditorName { get; set; }
 
         public int Id { get; set; }
     }
