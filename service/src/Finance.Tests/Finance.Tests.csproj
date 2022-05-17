@@ -30,4 +30,8 @@
     <ProjectReference Include="..\Finance.Infrastructure.Data\Finance.Infrastructure.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="PageObject\" />
+  </ItemGroup>
+
 </Project>

@@ -1,36 +1,38 @@
 ﻿namespace Finance.Tests.Creditor
 {
+    using Fixtures;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Chrome;
+    using PageObject;
     using Xunit;
 
     public class CreateCreditorTests
     {
-        private const string PageUrl = "http://localhost:4200/";
-        private readonly IWebDriver _webDriver;
-
-        public CreateCreditorTests()
-        {
-            _webDriver = new ChromeDriver();
-        }
-
         [Fact]
         private void ShouldCreditorBeCreated()
         {
-            // Arrange
-            _webDriver.Navigate().GoToUrl(PageUrl);
+            using (var webDriver = new ChromeDriver())
+            {
+                // Arrange
 
-            _webDriver.FindElement(By.Id("creditor")).Click();
+                var homePage = new HomePage(webDriver);
 
-            _webDriver.FindElement(By.Id("create")).Click();
+                homePage
+                    .NavigateTo();
 
-            _webDriver.FindElement(By.Id("name")).SendKeys("Creditor Name");
+                var creditor = new CreditorDtoFixture()
+                    .Build();
 
-            _webDriver.FindElement(By.Id("create")).Click();
+                // Act
 
-            // Act
+                homePage
+                    .ClickCreditorLink()
+                    .ClickCreateLink()
+                    .EnterCreditorName(creditor.CreditorName)
+                    .ClickCreateLink();
 
-            // Assert
+                // Assert
+            }
         }
     }
 }
