@@ -1,5 +1,6 @@
 ﻿namespace Finance.Api.Bank
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Application.Bank;
     using Domain.Bank.Aggregates.BankAccountAggregate;
@@ -42,6 +43,24 @@
                 .DispatchAsync(command);
 
             return Ok();
+        }
+
+        [HttpGet()]
+        public async Task<IActionResult> GetBankAccount()
+        {
+            var query = new GetBankAccountQuery();
+
+            var result = await _dispatcher
+                .DispatchAsync<GetBankAccountQuery, IList<GetBankAccountDto>>(query);
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(result);
+            }
         }
 
         [HttpGet("{id}")]
