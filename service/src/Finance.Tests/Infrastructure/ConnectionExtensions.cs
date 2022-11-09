@@ -48,7 +48,7 @@
 
             var parameters = new
             {
-                categoryName = dto.CategoryName
+                categoryName = dto.Name
             };
 
             return await connection
